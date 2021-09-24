@@ -80,8 +80,10 @@ public class HospitalSetController {
         Page<HospitalSet> page = new Page<>(current,limit);
         //构建条件
         QueryWrapper<HospitalSet> wrapper = new QueryWrapper<>();
-        String hosname = hospitalSetQueryVo.getHosname();//医院名称
-        String hoscode = hospitalSetQueryVo.getHoscode();//医院编号
+        //医院名称
+        String hosname = hospitalSetQueryVo.getHosname();
+        //医院编号
+        String hoscode = hospitalSetQueryVo.getHoscode();
         if(!StringUtils.isEmpty(hosname)) {
             wrapper.like("hosname",hospitalSetQueryVo.getHosname());
         }
