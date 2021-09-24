@@ -1,5 +1,3 @@
-package com.atguigu.yygh.vo.user;
-
 /**
  * @FileName: testMerge
  * @Author: SunJian
@@ -7,4 +5,7 @@ package com.atguigu.yygh.vo.user;
  * @Description: TODO //模块目的、功能描述
  */
 public class TestMerge {
+    public static void main(String[] args) {
+        System.out.println("test");
+    }
 }
