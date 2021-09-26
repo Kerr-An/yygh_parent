@@ -8,6 +8,6 @@ package com.atguigu.yygh.vo.user;
  */
 public class TestMerge {
     static {
-        String str1 = "我是分支hosp_dev_1的最新更新";
+        String str1 = "我是分支hosp_dev_1里vo的最新更新";
     }
 }
