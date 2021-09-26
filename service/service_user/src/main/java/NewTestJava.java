@@ -7,5 +7,6 @@
 public class NewTestJava {
     public static void main(String[] args) {
         // NewTestJava
+        System.out.println("test");
     }
 }
