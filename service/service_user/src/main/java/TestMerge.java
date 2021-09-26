@@ -7,6 +7,9 @@ package com.atguigu.yygh.vo.user;
  * @Description: testMerge测试从不同分支合并，解决冲突
  */
 public class TestMerge {
+    public static void main(String[] args) {
+        System.out.println("test");
+    }
     static {
         String str1 = "我是分支hosp_dev_1的最新更新";
     }
