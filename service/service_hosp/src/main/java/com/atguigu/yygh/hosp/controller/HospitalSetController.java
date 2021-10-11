@@ -10,7 +10,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,8 +31,7 @@ public class HospitalSetController {
     /**
      * 注入service
      */
-//    @Resource
-    @Autowired
+    @Resource
     private HospitalSetService hospitalSetService;
 
     /**
@@ -72,6 +70,7 @@ public class HospitalSetController {
      * @param hospitalSetQueryVo vo
      * @return 条件查询获取的列表
      */
+    @ApiOperation(value = "分页查询")
     @PostMapping("findPageHospSet/{current}/{limit}")
     public Result findPageHospSet(@PathVariable long current,
                                   @PathVariable long limit,
@@ -80,8 +79,8 @@ public class HospitalSetController {
         Page<HospitalSet> page = new Page<>(current,limit);
         //构建条件
         QueryWrapper<HospitalSet> wrapper = new QueryWrapper<>();
-        String hosname = hospitalSetQueryVo.getHosname();//医院名称
-        String hoscode = hospitalSetQueryVo.getHoscode();//医院编号
+        String hosname = hospitalSetQueryVo.getHosname();
+        String hoscode = hospitalSetQueryVo.getHoscode();
         if(!StringUtils.isEmpty(hosname)) {
             wrapper.like("hosname",hospitalSetQueryVo.getHosname());
         }
@@ -96,7 +95,13 @@ public class HospitalSetController {
         return Result.ok(pageHospitalSet);
     }
 
-    //4 添加医院设置
+    /**
+     * 4 添加医院设置
+     *
+     * @param hospitalSet 医院设置实体类
+     * @return 结果集
+     */
+    @ApiOperation(value = "添加医院设置")
     @PostMapping("saveHospitalSet")
     public Result saveHospitalSet(@RequestBody HospitalSet hospitalSet) {
         //设置状态 1 使用 0 不能使用
@@ -113,7 +118,13 @@ public class HospitalSetController {
         }
     }
 
-    //5 根据id获取医院设置
+    /**
+     * 5 根据id获取医院设置
+     *
+     * @param id 医院id
+     * @return 结果集
+     */
+    @ApiOperation(value = "根据id获取医院设置")
     @GetMapping("getHospSet/{id}")
     public Result getHospSet(@PathVariable Long id) {
 //        try {
@@ -127,7 +138,13 @@ public class HospitalSetController {
         return Result.ok(hospitalSet);
     }
 
-    //6 修改医院设置
+    /**
+     * 6 修改医院设置
+     *
+     * @param hospitalSet 医院设置实体类
+     * @return 结果集
+     */
+    @ApiOperation(value = "修改医院设置")
     @PostMapping("updateHospitalSet")
     public Result updateHospitalSet(@RequestBody HospitalSet hospitalSet) {
         boolean flag = hospitalSetService.updateById(hospitalSet);
@@ -138,7 +155,13 @@ public class HospitalSetController {
         }
     }
 
-    //7 批量删除医院设置
+    /**
+     * 7 批量删除医院设置
+     *
+     * @param idList ids
+     * @return 结果集
+     */
+    @ApiOperation(value = "批量删除医院设置")
     @DeleteMapping("batchRemove")
     public Result batchRemoveHospitalSet(@RequestBody List<Long> idList) {
         hospitalSetService.removeByIds(idList);
